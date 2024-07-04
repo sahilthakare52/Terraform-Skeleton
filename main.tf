@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "flow_log_bucket" {
   bucket = var.bucket_name
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
   tags = var.tags
@@ -59,5 +59,4 @@ resource "aws_flow_log" "flow_log" {
   log_destination_type = "s3"
   traffic_type         = var.traffic_type
   vpc_id               = var.vpc_id
-  iam_role_arn         = aws_iam_role.flow_log_role.arn
 }
