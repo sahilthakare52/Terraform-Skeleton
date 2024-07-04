@@ -54,7 +54,7 @@ resource "aws_iam_role_policy" "flow_log_policy" {
   })
 }
 
-resource "aws_vpc_flow_log" "flow_log" {
+resource "aws_flow_log" "flow_log" {
   log_destination      = aws_s3_bucket.flow_log_bucket.arn
   log_destination_type = "s3"
   traffic_type         = var.traffic_type
