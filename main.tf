@@ -33,8 +33,8 @@ resource "aws_iam_role" "flow_log_role" {
 }
 
 resource "aws_iam_role_policy" "flow_log_policy" {
-  name   = "${var.bucket_name}_flow_log_policy"
-  role   = aws_iam_role.flow_log_role.id
+  name = "${var.bucket_name}_flow_log_policy"
+  role = aws_iam_role.flow_log_role.id
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -44,7 +44,7 @@ resource "aws_iam_role_policy" "flow_log_policy" {
           "s3:GetBucketLocation",
           "s3:ListBucket"
         ],
-        Effect   = "Allow",
+        Effect = "Allow",
         Resource = [
           aws_s3_bucket.flow_log_bucket.arn,
           "${aws_s3_bucket.flow_log_bucket.arn}/*"
